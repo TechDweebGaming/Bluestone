@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sps",
+    "drd",
+    "sds"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stone"
+    },
+    "p": {
+      "item": "minecraft:ender_pearl"
+    },
+    "d": {
+      "item": "bluestone:bluestone"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_receiver"
+  }
+}

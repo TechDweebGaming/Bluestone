@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "enabled=true": { "model":  "bluestone:block/bluestone_emitter"},
+    "enabled=false": { "model": "bluestone:block/bluestone_emitter_disabled"}
+  }
+}

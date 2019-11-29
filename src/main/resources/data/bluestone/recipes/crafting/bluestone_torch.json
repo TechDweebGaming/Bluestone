@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    " s ",
+    "   "
+  ],
+  "key": {
+    "b": {
+      "item": "bluestone:bluestone"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_torch"
+  }
+}

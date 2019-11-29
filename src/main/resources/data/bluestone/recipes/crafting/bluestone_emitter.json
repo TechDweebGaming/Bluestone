@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sps",
+    "drd",
+    "sts"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stone"
+    },
+    "p": {
+      "item": "minecraft:ender_pearl"
+    },
+    "d": {
+      "item": "bluestone:bluestone"
+    },
+    "t": {
+      "item": "bluestone:bluestone_torch"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_emitter"
+  }
+}
