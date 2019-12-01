@@ -1,6 +1,6 @@
 package io.github.techdweebgaming.bluestone.blocks;
 
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.IBluestoneReceiver;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneReceiver;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;

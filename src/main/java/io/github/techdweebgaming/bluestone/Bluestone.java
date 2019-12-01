@@ -1,7 +1,7 @@
 package io.github.techdweebgaming.bluestone;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.INetworkToolData;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.NetworkToolData;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.NetworkToolDataStorage;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.INetworkToolData;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.NetworkToolData;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.NetworkToolDataStorage;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;

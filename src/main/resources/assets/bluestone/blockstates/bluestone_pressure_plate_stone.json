@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "bluestone:block/pressure_plate/stone" },
+    "powered=true": { "model": "bluestone:block/pressure_plate/stone_down" }
+  }
+}

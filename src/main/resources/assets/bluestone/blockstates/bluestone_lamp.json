@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": { "model":  "bluestone:block/lamp/off" },
+    "lit=true": { "model":  "bluestone:block/lamp/lit" }
+  }
+}

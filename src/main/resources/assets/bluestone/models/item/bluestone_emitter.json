@@ -1,3 +1,3 @@
 {
-  "parent": "bluestone:block/bluestone_emitter"
+  "parent": "bluestone:block/emitter/enabled"
 }

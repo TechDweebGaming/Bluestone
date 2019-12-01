@@ -1,7 +1,7 @@
 package io.github.techdweebgaming.bluestone.events;
 
 import io.github.techdweebgaming.bluestone.Bluestone;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.NetworkToolDataProvider;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.NetworkToolDataProvider;
 import io.github.techdweebgaming.bluestone.items.NetworkTool;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

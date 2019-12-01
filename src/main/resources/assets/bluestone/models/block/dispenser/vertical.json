@@ -1,0 +1,7 @@
+{
+  "parent": "block/orientable_vertical",
+  "textures": {
+    "front": "bluestone:block/dispenser/front_vertical",
+    "side": "bluestone:block/dispenser/top"
+  }
+}

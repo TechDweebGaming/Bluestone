@@ -1,0 +1,28 @@
+{
+    "variants": {
+        "facing=north,face=ceiling,powered=false": { "model": "bluestone:block/lever/off", "x": 180, "y": 180 },
+        "facing=south,face=ceiling,powered=false": { "model": "bluestone:block/lever/off", "x": 180, "y": 180 },
+        "facing=east,face=ceiling,powered=false": { "model": "bluestone:block/lever/off", "x": 180, "y": 90 },
+        "facing=west,face=ceiling,powered=false": { "model": "bluestone:block/lever/off", "x": 180, "y": 90 },
+        "facing=north,face=floor,powered=false": { "model": "bluestone:block/lever/off" },
+        "facing=south,face=floor,powered=false": { "model": "bluestone:block//lever/off" },
+        "facing=east,face=floor,powered=false": { "model": "bluestone:block/lever/off", "y": 270 },
+        "facing=west,face=floor,powered=false": { "model": "bluestone:block/lever/off", "y": 270 },
+        "facing=east,face=wall,powered=false": { "model": "bluestone:block/lever/off", "x": 90, "y": 90 },
+        "facing=west,face=wall,powered=false": { "model": "bluestone:block/lever/off", "x": 90, "y": 270 },
+        "facing=south,face=wall,powered=false" : { "model": "bluestone:block/lever/off", "x": 90, "y": 180 },
+        "facing=north,face=wall,powered=false" : { "model": "bluestone:block/lever/off", "x": 90 },
+        "facing=north,face=ceiling,powered=true" : { "model": "bluestone:block/lever/on", "x": 180, "y": 180 },
+        "facing=south,face=ceiling,powered=true" : { "model": "bluestone:block/lever/on", "x": 180, "y": 180 },
+        "facing=east,face=ceiling,powered=true" : { "model": "bluestone:block/lever/on", "x": 180, "y": 90 },
+        "facing=west,face=ceiling,powered=true" : { "model": "bluestone:block/lever/on", "x": 180, "y": 90 },
+        "facing=north,face=floor,powered=true": { "model": "bluestone:block/lever/on" },
+        "facing=south,face=floor,powered=true": { "model": "bluestone:block/lever/on" },
+        "facing=east,face=floor,powered=true": { "model": "bluestone:block/lever/on", "y": 270 },
+        "facing=west,face=floor,powered=true": { "model": "bluestone:block/lever/on", "y": 270 },
+        "facing=east,face=wall,powered=true": { "model": "bluestone:block/lever/on", "x": 90, "y": 90 },
+        "facing=west,face=wall,powered=true": { "model": "bluestone:block/lever/on", "x": 90, "y": 270 },
+        "facing=south,face=wall,powered=true": { "model": "bluestone:block/lever/on", "x": 90, "y": 180 },
+        "facing=north,face=wall,powered=true": { "model": "bluestone:block/lever/on", "x": 90 }
+    }
+}

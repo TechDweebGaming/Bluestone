@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "bluestone:block/piston/bottom",
+    "side": "bluestone:block/piston/side",
+    "top": "bluestone:block/piston/top_sticky"
+  }
+}

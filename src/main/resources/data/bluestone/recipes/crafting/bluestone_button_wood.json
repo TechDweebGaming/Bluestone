@@ -1,0 +1,14 @@
+{
+  "type":"crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bluestone:bluestone"
+    },
+    {
+      "tag": "minecraft:planks"
+    }
+  ],
+  "result": {
+    "item": "bluestone:bluestone_button_wood"
+  }
+}

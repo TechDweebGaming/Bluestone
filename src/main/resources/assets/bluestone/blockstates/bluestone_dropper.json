@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=down":  { "model": "bluestone:block/dropper/vertical", "x": 180 },
+    "facing=up":    { "model": "bluestone:block/dropper/vertical" },
+    "facing=north": { "model": "bluestone:block/dropper/horizontal" },
+    "facing=south": { "model": "bluestone:block/dropper/horizontal", "y": 180 },
+    "facing=west":  { "model": "bluestone:block/dropper/horizontal", "y": 270 },
+    "facing=east":  { "model": "bluestone:block/dropper/horizontal", "y": 90 }
+  }
+}

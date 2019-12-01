@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "bgb",
+    " b "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:glowstone"
+    },
+    "b": {
+      "item": "bluestone:bluestone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_lamp"
+  }
+}

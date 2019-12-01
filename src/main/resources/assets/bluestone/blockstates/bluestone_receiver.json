@@ -1,6 +1,6 @@
 {
   "variants": {
-    "enabled=true": { "model":  "bluestone:block/bluestone_receiver_enabled" },
-    "enabled=false": { "model":  "bluestone:block/bluestone_receiver" }
+    "enabled=true": { "model":  "bluestone:block/receiver/enabled" },
+    "enabled=false": { "model":  "bluestone:block/receiver/disabled" }
   }
 }

@@ -1,9 +1,8 @@
 package io.github.techdweebgaming.bluestone.tileentities;
 
-import io.github.techdweebgaming.bluestone.blocks.BluestoneEmitter;
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.BluestoneLink;
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.IBluestoneTransmitter;
-import net.minecraft.block.BlockState;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.BluestoneLink;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneTransceiverTileEntity;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneTransmitterTileEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -13,39 +12,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BluestoneTransmitterTileEntity extends TileEntity implements ITickableTileEntity, IBluestoneTransmitter {
+public abstract class BluestoneTransmitterTileEntity extends TileEntity implements ITickableTileEntity, IBluestoneTransmitterTileEntity {
 
-    private List<BluestoneLink> bluestoneLinks = new ArrayList<BluestoneLink>();
+    protected List<BluestoneLink> bluestoneLinks = new ArrayList<BluestoneLink>();
+    protected boolean lastEmittedState;
 
     protected BluestoneTransmitterTileEntity(TileEntityType<?> typeIn) {
         super(typeIn);
     }
 
-    public BluestoneTransmitterTileEntity() {
-        this(BluestoneTileEntities.bluestoneEmitterTileEntity);
-    }
-
     @Override
     public CompoundNBT write(CompoundNBT nbt) {
-        int oldSize = nbt.size();
-        nbt.putInt("count", bluestoneLinks.size());
-        // Remove excess tags
-        if(oldSize > bluestoneLinks.size()) {
-            for(int i = oldSize; i > bluestoneLinks.size(); i--) {
-                nbt.remove("link-" + (i - 1));
-            }
-        }
-        for(int i = 0; i < bluestoneLinks.size(); i++) {
-            nbt.put("link-" + i, bluestoneLinks.get(i).writeToNBT());
-        }
-        return nbt;
+        super.write(nbt);
+        return BluestoneTransmitterTEUtils.write(nbt, bluestoneLinks);
     }
 
     @Override
     public void read(CompoundNBT nbt) {
-        for(int i = 0; i < nbt.getInt("count"); i++) {
-            bluestoneLinks.add(BluestoneLink.readFromNBT(nbt.getCompound("link-" + i)));
-        }
+        super.read(nbt);
+        bluestoneLinks = BluestoneTransmitterTEUtils.read(nbt);
     }
 
     @Override
@@ -60,46 +45,42 @@ public class BluestoneTransmitterTileEntity extends TileEntity implements ITicka
 
     @Override
     public void tick() {
-        world.setBlockState(pos, getBlockState().with(BluestoneEmitter.ENABLED, !world.isBlockPowered(pos)));
-        Iterator<BluestoneLink> linkIterator = bluestoneLinks.iterator();
-        while(linkIterator.hasNext()) {
-            if(!linkIterator.next().emitToReceiver(getBlockState().get(BluestoneEmitter.ENABLED), world)) linkIterator.remove();
-        }
+        boolean state = getBluestoneState(getBlockState());
+        if(BluestoneTransmitterTEUtils.tick(bluestoneLinks, state, world, lastEmittedState == state)) markDirty();
+        lastEmittedState = state;
     }
 
     @Override
-    public boolean getBluestoneState(BlockState state) {
-        return state.get(BluestoneEmitter.ENABLED);
-    }
-
-    @Override
-    public void addBluestoneLink(BluestoneLink link) {
-        bluestoneLinks.add(link);
-    }
-
-    @Override
-    public boolean removeBluestoneLink(BluestoneLink link) {
-        Iterator<BluestoneLink> linkIterator = bluestoneLinks.iterator();
-        while(linkIterator.hasNext()) {
-            BluestoneLink existingLink = linkIterator.next();
-            if(link.sourcePos.getX() == existingLink.sourcePos.getX()
-            && link.sourcePos.getY() == existingLink.sourcePos.getY()
-            && link.sourcePos.getZ() == existingLink.sourcePos.getZ()
-            && link.targetPos.getX() == existingLink.targetPos.getX()
-            && link.targetPos.getY() == existingLink.targetPos.getY()
-            && link.targetPos.getZ() == existingLink.targetPos.getZ()
-            && link.sourceDimID == existingLink.sourceDimID
-            && link.targetDimID == existingLink.targetDimID) {
-                link.emitToReceiver(false, world);
-                bluestoneLinks.remove(existingLink);
+    public boolean addBluestoneLink(BluestoneLink link) {
+            if(BluestoneTransmitterTEUtils.addBluestoneLink(link, bluestoneLinks)) {
+                markDirty();
                 return true;
             }
-        }
         return false;
     }
 
     @Override
-    public void disableAllLinks() {
-        bluestoneLinks.forEach((link) -> link.emitToReceiver(false, world));
+    public boolean removeBluestoneLink(BluestoneLink link) {
+            if(BluestoneTransmitterTEUtils.removeBluestoneLink(link, bluestoneLinks, world)) {
+                markDirty();
+                return true;
+            }
+        return false;
+    }
+
+    @Override
+    public void clearLinks() {
+            Iterator<BluestoneLink> linkIterator = bluestoneLinks.iterator();
+            while(linkIterator.hasNext()) {
+                BluestoneLink link = linkIterator.next();
+                link.emitToReceiver(false, world);
+                // TODO Add Interdimensional Support
+                TileEntity te = world.getTileEntity(link.targetPos);
+                if(te instanceof IBluestoneTransceiverTileEntity) {
+                    IBluestoneTransceiverTileEntity transceiverTE = (IBluestoneTransceiverTileEntity) te;
+                    transceiverTE.unlink(link);
+                }
+            }
+            markDirty();
     }
 }

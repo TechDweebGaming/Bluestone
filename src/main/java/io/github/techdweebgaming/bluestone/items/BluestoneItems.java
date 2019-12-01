@@ -12,9 +12,9 @@ import net.minecraftforge.registries.ObjectHolder;
 @ObjectHolder(Bluestone.MODID)
 public class BluestoneItems {
 
-    public static final Item bluestone = new Item(new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(Bluestone.MODID, "bluestone");
+    public static final Item bluestone = new CraftingItem(new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(Bluestone.MODID, "bluestone");
     public static final Item networkTool = new NetworkTool(new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(Bluestone.MODID, "network_tool");
-    public static final Item bluestoneTorch = new Item(new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(Bluestone.MODID, "bluestone_torch");
+    public static final Item bluestoneTorch = new CraftingItem(new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(Bluestone.MODID, "bluestone_torch");
 
     @SubscribeEvent
     public static void onRegisterItems(RegistryEvent.Register<Item> event) {

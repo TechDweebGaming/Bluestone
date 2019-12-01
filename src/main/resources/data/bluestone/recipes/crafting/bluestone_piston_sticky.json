@@ -1,0 +1,14 @@
+{
+  "type":"crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bluestone:bluestone_piston"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "result": {
+    "item": "bluestone:bluestone_piston_sticky"
+  }
+}

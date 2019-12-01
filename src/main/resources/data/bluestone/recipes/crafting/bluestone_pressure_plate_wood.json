@@ -1,0 +1,14 @@
+{
+  "type":"crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bluestone:bluestone"
+    },
+    {
+      "tag": "minecraft:wooden_pressure_plates"
+    }
+  ],
+  "result": {
+    "item": "bluestone:bluestone_pressure_plate_wood"
+  }
+}

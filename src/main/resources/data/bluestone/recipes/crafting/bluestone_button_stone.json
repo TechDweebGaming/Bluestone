@@ -1,0 +1,14 @@
+{
+  "type":"crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bluestone:bluestone"
+    },
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "result": {
+    "item": "bluestone:bluestone_button_stone"
+  }
+}

@@ -39,5 +39,4 @@ public class BluestoneEmitter extends Block {
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return BluestoneTileEntities.bluestoneEmitterTileEntity.create();
     }
-
 }

@@ -1,10 +1,10 @@
 package io.github.techdweebgaming.bluestone.items;
 
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.BluestoneLink;
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.IBluestoneReceiver;
-import io.github.techdweebgaming.bluestone.bluestoneNetwork.IBluestoneTransmitter;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.INetworkToolData;
-import io.github.techdweebgaming.bluestone.capabilities.networkTool.NetworkToolDataProvider;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.BluestoneLink;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneReceiver;
+import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneTransmitterTileEntity;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.INetworkToolData;
+import io.github.techdweebgaming.bluestone.capabilities.networktool.NetworkToolDataProvider;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -58,38 +58,42 @@ public class NetworkTool extends Item {
     public ActionResultType onItemUse(ItemUseContext context) {
         INetworkToolData capability = context.getItem().getCapability(NetworkToolDataProvider.NETWORK_TOOL_DATA_CAPABILITY).orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
 
-        if(context.isPlacerSneaking()) {
-            capability.setIsLinking(!capability.getIsLinking());
-            capability.clearData();
-            String modeName = capability.getIsLinking() ? "Linking" : "Unlinking";
-            context.getPlayer().sendStatusMessage(new StringTextComponent(String.format("Mode Set To: %s!", modeName)), true);
-            return ActionResultType.SUCCESS;
+        if(context.getWorld().getTileEntity(context.getPos()) instanceof IBluestoneTransmitterTileEntity) {
+            // If the block is both a transmitter and receiver (logic gate), only use transmitter behavior if the player is sneaking
+            if(context.isPlacerSneaking() || !(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver)) {
+                capability.setWorld(context.getWorld().getWorldType().getId());
+                capability.setPos(context.getPos());
+                context.getPlayer().sendStatusMessage(new StringTextComponent("Source Set Successfully!"), true);
+                return ActionResultType.SUCCESS;
+            }
         }
-
-        if(context.getWorld().getTileEntity(context.getPos()) instanceof IBluestoneTransmitter) {
-            capability.setWorld(context.getWorld().getWorldType().getId());
-            capability.setPos(context.getPos());
-            context.getPlayer().sendStatusMessage(new StringTextComponent("Source Set Successfully!"), true);
-            return ActionResultType.SUCCESS;
-        } else if(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver) {
+        if(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver) {
             if(capability.getPos() == null) {
                 context.getPlayer().sendStatusMessage(new StringTextComponent("Must Link Source First!"), true);
                 return ActionResultType.SUCCESS;
             } else {
                 BluestoneLink link = new BluestoneLink(capability.getWorld(), context.getWorld().getWorldType().getId(), capability.getPos(), context.getPos());
                 // TODO Fix Interdimensional Linking
-                IBluestoneTransmitter transmitterTE = (IBluestoneTransmitter) context.getWorld().getTileEntity(capability.getPos());
-                if(capability.getIsLinking()) {
-                    transmitterTE.addBluestoneLink(link);
-                    context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Linked!"), true);
-                } else {
-                    if(transmitterTE.removeBluestoneLink(link)) {
-                        context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Unlinked!"), true);
+                if(context.getWorld().isBlockPresent(capability.getPos())) {
+                    IBluestoneTransmitterTileEntity transmitterTE = (IBluestoneTransmitterTileEntity) context.getWorld().getTileEntity(capability.getPos());
+                    if(capability.getIsLinking()) {
+                        if(transmitterTE.addBluestoneLink(link)) context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Linked!"), true);
+                        else context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Already Linked!"), true);
+                    } else {
+                        if(transmitterTE.removeBluestoneLink(link)) context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Unlinked!"), true);
+                        else context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Not Linked!"), true);
                     }
-                    else context.getPlayer().sendStatusMessage(new StringTextComponent("Blocks Not Linked!"), true);
+                } else {
+                    context.getPlayer().sendStatusMessage(new StringTextComponent("Transmitter Not Loaded!"), true);
                 }
                 return ActionResultType.SUCCESS;
             }
+        } else if(context.isPlacerSneaking()) {
+            capability.setIsLinking(!capability.getIsLinking());
+            capability.clearData();
+            String modeName = capability.getIsLinking() ? "Linking" : "Unlinking";
+            context.getPlayer().sendStatusMessage(new StringTextComponent(String.format("Mode Set To: %s!", modeName)), true);
+            return ActionResultType.SUCCESS;
         }
         return ActionResultType.PASS;
     }

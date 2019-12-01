@@ -22,14 +22,14 @@ displayName="Bluestone" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="" #optional
+#logoFile="bluestone_logo.png" #optional
 # A text field displayed in the mod UI
 #credits="" #optional
 # A text field displayed in the mod UI
 authors="TechDweebGaming" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Wireless Redstone Made Better
+Wireless Redstone Made Easy
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 #[[dependencies.bluestone]] #optional

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": [
+      { "model": "bluestone:block/bluestone_tnt" }
+    ]
+  }
+}

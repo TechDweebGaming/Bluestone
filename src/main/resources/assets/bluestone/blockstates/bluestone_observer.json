@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=up,powered=false": { "model": "bluestone:block/observer/off", "x": 270 },
+    "facing=down,powered=false": { "model": "bluestone:block/observer/off", "x": 90 },
+    "facing=north,powered=false": { "model": "bluestone:block/observer/off" },
+    "facing=south,powered=false": { "model": "bluestone:block/observer/off", "y": 180 },
+    "facing=west,powered=false": { "model": "bluestone:block/observer/off", "y": 270 },
+    "facing=east,powered=false": { "model": "bluestone:block/observer/off", "y": 90 },
+    "facing=up,powered=true": { "model": "bluestone:block/observer/off", "x": 270 },
+    "facing=down,powered=true": { "model": "bluestone:block/observer/off", "x": 90 },
+    "facing=north,powered=true": { "model": "bluestone:block/observer/off" },
+    "facing=south,powered=true": { "model": "bluestone:block/observer/off", "y": 180 },
+    "facing=west,powered=true": { "model": "bluestone:block/observer/off", "y": 270 },
+    "facing=east,powered=true": { "model": "bluestone:block/observer/off", "y": 90 }
+  }
+}

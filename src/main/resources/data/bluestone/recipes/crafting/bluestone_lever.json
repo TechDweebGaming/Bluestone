@@ -1,0 +1,14 @@
+{
+  "type":"crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:lever"
+    },
+    {
+      "item": "bluestone:bluestone"
+    }
+  ],
+  "result": {
+    "item": "bluestone:bluestone_lever"
+  }
+}
