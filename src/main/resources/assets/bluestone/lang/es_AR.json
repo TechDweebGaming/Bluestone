@@ -1,0 +1,19 @@
+{
+  "item.bluestone.bluestone": "Bluestone Dust",
+  "item.bluestone.network_tool": "Network Tool",
+  "item.bluestone.bluestone_torch": "Bluestone Torch",
+  "block.bluestone.bluestone_emitter": "Bluestone Emitter",
+  "block.bluestone.bluestone_receiver": "Bluestone Receiver",
+  "block.bluestone.bluestone_lever": "Bluestone Lever",
+  "block.bluestone.bluestone_lamp": "Bluestone Lamp",
+  "block.bluestone.bluestone_observer": "Bluestone Observer",
+  "block.bluestone.bluestone_tnt": "Bluestone TNT",
+  "block.bluestone.bluestone_dispenser": "Bluestone Dispenser",
+  "block.bluestone.bluestone_dropper": "Bluestone Dropper",
+  "block.bluestone.bluestone_button_stone": "Stone Bluestone Button",
+  "block.bluestone.bluestone_button_wood": "Wooden Bluestone Button",
+  "block.bluestone.bluestone_piston": "Bluestone Piston",
+  "block.bluestone.bluestone_piston_sticky": "Sticky Bluestone Piston",
+  "block.bluestone.bluestone_pressure_plate_stone": "Stone Bluestone Pressure Plate",
+  "block.bluestone.bluestone_pressure_plate_wood": "Wooden Bluestone Pressure Plate"
+}
