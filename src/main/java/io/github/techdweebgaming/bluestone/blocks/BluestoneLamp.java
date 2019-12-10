@@ -21,13 +21,18 @@ public class BluestoneLamp extends RedstoneLampBlock implements IBluestoneReceiv
     }
 
     @Override
+    public int getLightValue(BlockState state) {
+        return state.get(LIT) ? 15 : 0;
+    }
+
+    @Override
     public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
         return;
     }
 
     @Override
     public void onBluestoneStateChange(boolean state, World sourceWorld, BlockPos sourcePos, World targetWorld, BlockPos targetPos) {
-        targetWorld.setBlockState(targetPos, targetWorld.getBlockState(targetPos).with(LIT, state));
+        targetWorld.setBlockState(targetPos, targetWorld.getBlockState(targetPos).with(LIT, state), 2);
         targetWorld.getPendingBlockTicks().scheduleTick(targetPos, this, tickRate(targetWorld));
     }
 }
