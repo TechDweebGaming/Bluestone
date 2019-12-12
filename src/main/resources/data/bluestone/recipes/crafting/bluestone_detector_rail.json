@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i i",
+    "ipi",
+    "ibi"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "p": {
+      "item": "bluestone:bluestone_pressure_plate_stone"
+    },
+    "b": {
+      "item": "bluestone:bluestone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_detector_rail",
+    "count": 6
+  }
+}

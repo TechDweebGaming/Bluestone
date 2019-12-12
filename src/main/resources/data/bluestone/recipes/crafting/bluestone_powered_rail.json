@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i i",
+    "isi",
+    "ibi"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:gold_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "item": "bluestone:bluestone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_powered_rail",
+    "count": 6
+  }
+}

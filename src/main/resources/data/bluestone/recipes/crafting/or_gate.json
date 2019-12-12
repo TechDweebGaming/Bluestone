@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sts",
+    "sbs",
+    "btb"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stone"
+    },
+    "t": {
+      "item": "bluestone:bluestone_torch"
+    },
+    "b": {
+      "item": "bluestone:bluestone"
+    }
+  },
+  "result": {
+    "item": "bluestone:gate_or"
+  }
+}

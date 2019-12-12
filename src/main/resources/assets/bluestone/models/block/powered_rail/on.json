@@ -1,0 +1,6 @@
+{
+  "parent": "block/rail_flat",
+  "textures": {
+    "rail": "bluestone:block/powered_rail/on"
+  }
+}

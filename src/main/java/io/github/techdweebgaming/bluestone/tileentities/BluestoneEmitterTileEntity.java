@@ -11,7 +11,7 @@ public class BluestoneEmitterTileEntity extends BluestoneTransmitterTileEntity {
 
     @Override
     public void tick() {
-        world.setBlockState(pos, getBlockState().with(BluestoneEmitter.ENABLED, !world.isBlockPowered(pos)));
+        if(world.isBlockPowered(pos) != getBlockState().get(BluestoneEmitter.ENABLED)) world.setBlockState(pos, getBlockState().with(BluestoneEmitter.ENABLED, !world.isBlockPowered(pos)));
         super.tick();
     }
 

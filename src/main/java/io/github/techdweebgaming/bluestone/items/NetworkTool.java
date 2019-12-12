@@ -5,6 +5,7 @@ import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneReceiver;
 import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneTransmitterTileEntity;
 import io.github.techdweebgaming.bluestone.capabilities.networktool.INetworkToolData;
 import io.github.techdweebgaming.bluestone.capabilities.networktool.NetworkToolDataProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -68,6 +69,9 @@ public class NetworkTool extends Item {
             }
         }
         if(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver) {
+            if(capability.getPos() != null && (context.getWorld().getBlockState(capability.getPos()).getBlock() == Blocks.AIR || context.getWorld().getBlockState(capability.getPos()).getBlock() == Blocks.CAVE_AIR)) {
+                capability.clearData();
+            }
             if(capability.getPos() == null) {
                 context.getPlayer().sendStatusMessage(new StringTextComponent("Must Link Source First!"), true);
                 return ActionResultType.SUCCESS;

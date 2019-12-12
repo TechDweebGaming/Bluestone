@@ -1,0 +1,6 @@
+{
+  "parent": "block/rail_flat",
+  "textures": {
+    "rail": "bluestone:block/detector_rail/off"
+  }
+}

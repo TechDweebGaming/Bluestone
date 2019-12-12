@@ -1,13 +1,16 @@
 package io.github.techdweebgaming.bluestone.blocks;
 
 import io.github.techdweebgaming.bluestone.Bluestone;
+import io.github.techdweebgaming.bluestone.blocks.vanilla.*;
+import io.github.techdweebgaming.bluestone.items.InDevBlockItem;
+import io.github.techdweebgaming.bluestone.tileentities.logicgates.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +39,15 @@ public class BluestoneBlocks {
     public static final Block bluestonePistonSticky = register(new BluestonePiston(true, getProperties(Material.PISTON, SoundType.STONE)), "bluestone_piston_sticky");
     public static final Block bluestoneStonePressurePlate = register(new BluestonePressurePlate(PressurePlateBlock.Sensitivity.MOBS, getProperties(Material.ROCK, SoundType.STONE, 1.0F, 1.0F, true)), "bluestone_pressure_plate_stone");
     public static final Block bluestoneWoodenPressurePlate = register(new BluestonePressurePlate(PressurePlateBlock.Sensitivity.EVERYTHING, getProperties(Material.WOOD, SoundType.WOOD, 1.0F, 1.0F, true)), "bluestone_pressure_plate_wood");
+    public static final Block bluestoneDetectorRail = register(new BluestoneDetectorRail(getProperties(Material.MISCELLANEOUS, SoundType.METAL, 1.0F, 1.0F, true)), "bluestone_detector_rail");
+    public static final Block bluestonePoweredRail = register(new BluestonePoweredRail(false, getProperties(Material.MISCELLANEOUS, SoundType.METAL, 1.0F, 1.0F, true)), "bluestone_powered_rail");
+    public static final Block bluestoneActivatorRail = register(new BluestonePoweredRail(true, getProperties(Material.MISCELLANEOUS, SoundType.METAL, 1.0F, 1.0F, true)), "bluestone_activator_rail");
+    public static final Block orGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), ORGateTileEntity.class), "gate_or");
+    public static final Block andGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), ANDGateTileEntity.class), "gate_and");
+    public static final Block nandGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), NANDGateTileEntity.class), "gate_nand");
+    public static final Block norGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), NORGateTileEntity.class), "gate_nor");
+    public static final Block xorGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), XORGateTileEntity.class), "gate_xor");
+    public static final Block xnorGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), XNORGateTileEntity.class), "gate_xnor");
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -45,7 +57,11 @@ public class BluestoneBlocks {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         for(Block block : blocks) {
-            event.getRegistry().register(new BlockItem(block, new Item.Properties().group(ItemGroup.REDSTONE)).setRegistryName(block.getRegistryName()));
+            if(block instanceof InDevBlockItem.IInDevBlock) {
+                event.getRegistry().register(new InDevBlockItem(block, new Item.Properties().group(Bluestone.bluestoneCreativeTab)).setRegistryName(block.getRegistryName()));
+                continue;
+            }
+            event.getRegistry().register(new BlockItem(block, new Item.Properties().group(Bluestone.bluestoneCreativeTab)).setRegistryName(block.getRegistryName()));
         }
     }
 

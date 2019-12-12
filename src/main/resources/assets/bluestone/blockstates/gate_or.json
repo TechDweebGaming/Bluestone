@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model":  "bluestone:block/gate/or/off" },
+    "powered=true": { "model":  "bluestone:block/gate/or/on" }
+  }
+}

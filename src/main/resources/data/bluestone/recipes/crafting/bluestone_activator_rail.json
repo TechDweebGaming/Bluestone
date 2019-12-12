@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "isi",
+    "iti",
+    "isi"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "t": {
+      "item": "bluestone:bluestone_torch"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_activator_rail",
+    "count": 6
+  }
+}

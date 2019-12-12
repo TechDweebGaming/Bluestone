@@ -5,6 +5,8 @@ import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneTransceive
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Tuple;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -50,5 +52,19 @@ public abstract class BluestoneTransceiverTileEntity extends BluestoneTransmitte
         while(linkIterator.hasNext()) {
             if(BluestoneTransmitterTEUtils.linksMatch(link, linkIterator.next().getA())) linkIterator.remove();
         }
+    }
+
+    @Override
+    public void signalReceived(World sourceWorld, BlockPos sourcePos, World targetWorld, BlockPos targetPos, boolean state) {
+        BluestoneLink link = new BluestoneLink(sourceWorld.dimension.getType().getId(), targetWorld.dimension.getType().getId(), sourcePos, targetPos);
+        for(int i = 0; i < inputLinks.size(); i++) {
+            if(BluestoneTransmitterTEUtils.linksMatch(inputLinks.get(i).getA(), link)) {
+                if(state != inputLinks.get(i).getB()) {
+                    inputLinks.set(i, new Tuple<>(inputLinks.get(i).getA(), state));
+                }
+                return;
+            }
+        }
+        inputLinks.add(new Tuple<>(link, state));
     }
 }

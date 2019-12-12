@@ -1,4 +1,6 @@
 {
+  "itemGroup.bluestone": "Bluestone",
+
   "item.bluestone.bluestone": "Bluestone Dust",
   "item.bluestone.network_tool": "Network Tool",
   "item.bluestone.bluestone_torch": "Bluestone Torch",
@@ -16,5 +18,14 @@
   "block.bluestone.bluestone_piston": "Bluestone Piston",
   "block.bluestone.bluestone_piston_sticky": "Sticky Bluestone Piston",
   "block.bluestone.bluestone_pressure_plate_stone": "Stone Bluestone Pressure Plate",
-  "block.bluestone.bluestone_pressure_plate_wood": "Wooden Bluestone Pressure Plate"
+  "block.bluestone.bluestone_pressure_plate_wood": "Wooden Bluestone Pressure Plate",
+  "block.bluestone.bluestone_detector_rail": "Bluestone Detector Rail",
+  "block.bluestone.bluestone_powered_rail": "Powered Bluestone Rail",
+  "block.bluestone.bluestone_activator_rail": "Bluestone Activator Rail",
+  "block.bluestone.gate_or": "OR Gate",
+  "block.bluestone.gate_and": "AND Gate",
+  "block.bluestone.gate_nand": "NAND Gate",
+  "block.bluestone.gate_nor": "NOR Gate",
+  "block.bluestone.gate_xor": "XOR Gate",
+  "block.bluestone.gate_xnor": "XNOR Gate"
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_rail_raised_ne",
+  "textures": {
+    "rail": "bluestone:block/powered_rail/on"
+  }
+}

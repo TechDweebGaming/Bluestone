@@ -24,7 +24,7 @@ displayName="Bluestone" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 #logoFile="bluestone_logo.png" #optional
 # A text field displayed in the mod UI
-#credits="" #optional
+credits="DirtCraft" #optional
 # A text field displayed in the mod UI
 authors="TechDweebGaming" #optional
 # The description text for the mod (multi line!) (#mandatory)
