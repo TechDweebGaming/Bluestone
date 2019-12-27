@@ -1,4 +1,4 @@
-package io.github.techdweebgaming.bluestone.blocks;
+package io.github.techdweebgaming.bluestone.blocks.vanilla;
 
 import io.github.techdweebgaming.bluestone.bluestonenetwork.IBluestoneReceiver;
 import net.minecraft.block.Block;

@@ -1,10 +1,8 @@
 {
   "itemGroup.bluestone": "Bluestone",
-
   "item.bluestone.bluestone": "Bluestone Dust",
   "item.bluestone.network_tool": "Network Tool",
   "item.bluestone.bluestone_torch": "Bluestone Torch",
-
   "block.bluestone.bluestone_emitter": "Bluestone Emitter",
   "block.bluestone.bluestone_receiver": "Bluestone Receiver",
   "block.bluestone.bluestone_lever": "Bluestone Lever",
@@ -27,5 +25,9 @@
   "block.bluestone.gate_nand": "NAND Gate",
   "block.bluestone.gate_nor": "NOR Gate",
   "block.bluestone.gate_xor": "XOR Gate",
-  "block.bluestone.gate_xnor": "XNOR Gate"
+  "block.bluestone.gate_xnor": "XNOR Gate",
+  "block.bluestone.bluestone_door_iron": "Bluestone Iron Door",
+  "block.bluestone.bluestone_door_wood": "Bluestone Wooden Door",
+  "block.bluestone.bluestone_trap_door_iron": "Bluestone Iron Trap Door",
+  "block.bluestone.bluestone_trap_door_wood": "Bluestone Wooden Trap Door"
 }

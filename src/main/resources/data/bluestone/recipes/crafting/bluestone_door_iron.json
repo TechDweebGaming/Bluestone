@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ii ",
+    "ib ",
+    "ii "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "bluestone:bluestone"
+    }
+  },
+  "result": {
+    "item": "bluestone:bluestone_door_iron",
+    "count": 3
+  }
+}

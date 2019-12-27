@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -48,6 +47,10 @@ public class BluestoneBlocks {
     public static final Block norGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), NORGateTileEntity.class), "gate_nor");
     public static final Block xorGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), XORGateTileEntity.class), "gate_xor");
     public static final Block xnorGate = register(new LogicGateBlock(getProperties(Material.ROCK, SoundType.STONE), XNORGateTileEntity.class), "gate_xnor");
+    public static final Block bluestoneIronDoor = register(new BluestoneDoor(getProperties(Material.IRON, SoundType.METAL)), "bluestone_door_iron");
+    public static final Block bluestoneWoodenDoor = register(new BluestoneDoor(getProperties(Material.WOOD, SoundType.WOOD)), "bluestone_door_wood");
+    public static final Block bluestoneIronTrapDoor = register(new BluestoneTrapDoor(getProperties(Material.IRON, SoundType.METAL)), "bluestone_trap_door_iron");
+    public static final Block bluestoneWoodenTrapDoor = register(new BluestoneTrapDoor(getProperties(Material.WOOD, SoundType.WOOD)), "bluestone_trap_door_wood");
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
