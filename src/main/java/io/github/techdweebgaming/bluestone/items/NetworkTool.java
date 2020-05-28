@@ -46,7 +46,7 @@ public class NetworkTool extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        if(playerIn.isSneaking() && playerIn.getPitch(1.0F) < -80) {
+        if(playerIn.func_226563_dT_() && playerIn.getPitch(1.0F) < -80) {
             INetworkToolData capability = playerIn.getHeldItem(handIn).getCapability(NetworkToolDataProvider.NETWORK_TOOL_DATA_CAPABILITY).orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
             capability.clearData();
             playerIn.sendStatusMessage(new StringTextComponent("Cleared Linked Coordinates!"), true);
@@ -61,7 +61,7 @@ public class NetworkTool extends Item {
 
         if(context.getWorld().getTileEntity(context.getPos()) instanceof IBluestoneTransmitterTileEntity) {
             // If the block is both a transmitter and receiver (logic gate), only use transmitter behavior if the player is sneaking
-            if(context.isPlacerSneaking() || !(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver)) {
+            if(context.func_225518_g_() || !(context.getWorld().getBlockState(context.getPos()).getBlock() instanceof IBluestoneReceiver)) {
                 capability.setWorld(context.getWorld().getWorldType().getId());
                 capability.setPos(context.getPos());
                 context.getPlayer().sendStatusMessage(new StringTextComponent("Source Set Successfully!"), true);
@@ -92,7 +92,7 @@ public class NetworkTool extends Item {
                 }
                 return ActionResultType.SUCCESS;
             }
-        } else if(context.isPlacerSneaking()) {
+        } else if(context.func_225518_g_()) {
             capability.setIsLinking(!capability.getIsLinking());
             capability.clearData();
             String modeName = capability.getIsLinking() ? "Linking" : "Unlinking";

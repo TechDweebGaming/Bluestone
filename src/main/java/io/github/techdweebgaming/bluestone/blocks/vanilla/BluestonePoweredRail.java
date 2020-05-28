@@ -27,7 +27,7 @@ public class BluestonePoweredRail extends PoweredRailBlock implements IBluestone
         boolean priorState = blockState.get(POWERED);
         if(priorState != state) {
             targetWorld.setBlockState(targetPos, blockState.with(POWERED, state), 3);
-            targetWorld.notifyNeighborsOfStateChange(targetPos.down(), this);
+            targetWorld.notifyNeighborsOfStateChange(targetPos.func_177977_b(), this);
             if (blockState.get(SHAPE).isAscending()) {
                 targetWorld.notifyNeighborsOfStateChange(targetPos.up(), this);
             }

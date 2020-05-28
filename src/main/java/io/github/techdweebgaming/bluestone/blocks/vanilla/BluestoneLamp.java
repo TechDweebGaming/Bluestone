@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneLampBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
@@ -26,7 +27,7 @@ public class BluestoneLamp extends RedstoneLampBlock implements IBluestoneReceiv
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         return;
     }
 

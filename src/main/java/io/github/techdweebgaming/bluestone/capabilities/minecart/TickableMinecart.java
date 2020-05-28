@@ -32,7 +32,7 @@ public class TickableMinecart implements ITickableMinecart {
     @Override
     public void tick() {
         try {
-            BlockPos railPos = new BlockPos(MathHelper.floor(minecart.posX), MathHelper.floor(minecart.posY), MathHelper.floor(minecart.posZ));
+            BlockPos railPos = new BlockPos(MathHelper.floor(minecart.getPosition().getX()), MathHelper.floor(minecart.getPosition().getY()), MathHelper.floor(minecart.getPosition().getZ()));
             BlockState railState = minecart.world.getBlockState(railPos);
             if(!(railState.getBlock() instanceof BluestonePoweredRail)) return;
             if (minecart.canUseRail() && railState.isIn(BlockTags.RAILS)) {
@@ -47,16 +47,16 @@ public class TickableMinecart implements ITickableMinecart {
             AbstractRailBlock abstractRailBlock = (AbstractRailBlock)railState.getBlock();
 
             Entity entity = minecart.getPassengers().isEmpty() ? null : minecart.getPassengers().get(0);
-            if (entity instanceof PlayerEntity && minecart.func_213296_b(entity.getMotion()) > 1.0E-4D && minecart.func_213296_b(minecart.getMotion()) < 0.01D) flag1 = false;
+            if (entity instanceof PlayerEntity && minecart.horizontalMag(entity.getMotion()) > 1.0E-4D && minecart.horizontalMag(minecart.getMotion()) < 0.01D) flag1 = false;
 
             if(flag1 && minecart.shouldDoRailFunctions()) {
-                if (Math.sqrt(minecart.func_213296_b(minecart.getMotion())) < 0.03D) minecart.setMotion(Vec3d.ZERO);
+                if (Math.sqrt(minecart.horizontalMag(minecart.getMotion())) < 0.03D) minecart.setMotion(Vec3d.ZERO);
                 else minecart.setMotion(minecart.getMotion().mul(0.5D, 0.0D, 0.5D));
             }
 
             if(flag && minecart.shouldDoRailFunctions()) {
                 Vec3d vec3d = minecart.getMotion();
-                double d24 = Math.sqrt(minecart.func_213296_b(vec3d));
+                double d24 = Math.sqrt(minecart.horizontalMag(vec3d));
                 if (d24 > 0.01D) {
                     minecart.setMotion(vec3d.add(vec3d.x / d24 * 0.06D, 0.0D, vec3d.z / d24 * 0.06D));
                 } else {

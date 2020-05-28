@@ -37,7 +37,7 @@ public class BluestoneDoor extends DoorBlock implements IBluestoneReceiver {
         targetWorld.setBlockState(targetPos, targetWorld.getBlockState(targetPos).with(POWERED, state), 2);
         if(targetWorld.getBlockState(targetPos).get(OPEN) != state) {
             if(targetWorld.getBlockState(targetPos).get(HALF) == DoubleBlockHalf.UPPER) {
-                toggleDoor(targetWorld, targetPos.down(), state);
+                toggleDoor(targetWorld, targetPos.func_177977_b(), state);
             } else {
                 toggleDoor(targetWorld, targetPos, state);
             }

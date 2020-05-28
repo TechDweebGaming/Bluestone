@@ -24,7 +24,8 @@ public class BluestoneTNT extends TNTBlock implements IBluestoneReceiver {
     @Override
     public void onBluestoneStateChange(boolean state, World sourceWorld, BlockPos sourcePos, World targetWorld, BlockPos targetPos) {
         if(state) {
-            explode(targetWorld, targetPos);
+            //explode(targetWorld, targetPos);
+            catchFire(null, targetWorld, targetPos, null, null);
             targetWorld.removeBlock(targetPos, false);
         }
     }
